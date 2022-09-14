@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista-Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let todosDados of todosDados" routerLink="/produtos-detalhes/{{todosDados.id}}">
+      <ion-label>{{todosDados.nome}}</ion-label>
+      <p>R$ {{todosDados.valor}}</p>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+<ion-button shape="round" fill="outline" size=4 color="dark" routerLink="/home">Voltar</ion-button>
