@@ -10,6 +10,7 @@ import { ServicosPrecosService } from 'src/app/servicos1/servicos-precos.service
 export class ServicoDetalhesPage implements OnInit {
 
   public ServicosPrecosService : any
+  public modoEdicao = false
 
   constructor(private route : ActivatedRoute,
     private produto : ServicosPrecosService) { }
@@ -17,6 +18,13 @@ export class ServicoDetalhesPage implements OnInit {
   ngOnInit() {
     const id : number = Number(this.route.snapshot.paramMap.get('id'))
     this.ServicosPrecosService = this.produto.enviarDadosId1(id)
+  }
+
+  iniciarEdicao(){
+    this.modoEdicao = true
+  }
+  encerrarEdicao(){
+    this.modoEdicao = false
   }
 
 }

@@ -5,8 +5,19 @@
 </ion-header>
 
 <ion-content >
-  <ion-item>Serviços: {{ServicosPrecosService.nome}}</ion-item>
-  <ion-item>Quantidade: {{ServicosPrecosService.valor}}</ion-item>
+  <ion-item *ngIf=!modoEdicao>Serviços: {{ServicosPrecosService.nome}}</ion-item>
+  <ion-item *ngIf=!modoEdicao>Quantidade: {{ServicosPrecosService.valor}}</ion-item>
+
+  <ion-button *ngIf="!modoEdicao" (click)="iniciarEdicao()" shape="round" fill="outline" color="dark">Alterar dados</ion-button>
 
 </ion-content>
+
+<form *ngIf="modoEdicao" (ngSubmit)="encerrarEdicao()">
+  <ion-label>Nome</ion-label>
+  <ion-input [(ngModel)]="ServicosPrecosService.nome" name="nome"></ion-input>
+  <ion-label>Quantidade</ion-label>
+  <ion-input [(ngModel)]="ServicosPrecosService.quantidade" name="quantidade"></ion-input>
+  <ion-button type="submit" shape="round" fill="outline" color="dark">Salvar</ion-button>
+</form>
+
 <ion-button shape="round" fill="outline" size=4 color="dark" routerLink="/servico-listagem">Voltar</ion-button>

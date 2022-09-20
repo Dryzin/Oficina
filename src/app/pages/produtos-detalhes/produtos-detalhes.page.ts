@@ -8,16 +8,23 @@ import { ProdutosListagemService } from 'src/app/services/produtos-listagem.serv
   styleUrls: ['./produtos-detalhes.page.scss'],
 })
 export class ProdutosDetalhesPage implements OnInit {
-
   public produtoSelecionado : any
+  public modoEdicao = false
 
-
-  constructor(private route : ActivatedRoute,
+  constructor(
+    private route : ActivatedRoute,
     private produto : ProdutosListagemService) { }
 
   ngOnInit() {
     const id : number = Number(this.route.snapshot.paramMap.get('id'))
     this.produtoSelecionado = this.produto.enviarDadosId(id)
+  }
+
+  iniciarEdicao(){
+    this.modoEdicao = true
+  }
+  encerrarEdicao(){
+    this.modoEdicao = false
   }
 
 }

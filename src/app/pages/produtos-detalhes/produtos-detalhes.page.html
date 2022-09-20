@@ -5,9 +5,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>Produto: {{produtoSelecionado.nome}}</ion-item>
-  <ion-item>Quantidade: {{produtoSelecionado.quantidade}}</ion-item>
-  
+  <ion-item *ngIf=!modoEdicao>Produto: {{produtoSelecionado.nome}}</ion-item>
+  <ion-item *ngIf=!modoEdicao>Quantidade: {{produtoSelecionado.quantidade}}</ion-item>
 
+  <ion-button *ngIf="!modoEdicao" (click)="iniciarEdicao()" shape="round" fill="outline" color="dark">Alterar dados</ion-button>
+  
 </ion-content>
+
+<form *ngIf="modoEdicao" (ngSubmit)="encerrarEdicao()">
+  <ion-label>Nome</ion-label>
+  <ion-input [(ngModel)]="produtoSelecionado.nome" name="nome"></ion-input>
+  <ion-label>Quantidade</ion-label>
+  <ion-input [(ngModel)]="produtoSelecionado.quantidade" name="quantidade"></ion-input>
+  <ion-button type="submit" shape="round" fill="outline" color="dark">Salvar</ion-button>
+</form>
+
 <ion-button shape="round" fill="outline" color="dark" routerLink="/produtos-listagem">Voltar</ion-button>
