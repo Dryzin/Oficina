@@ -25,7 +25,10 @@ enviarDadosId(id : number){
   return produtosSelecionados[0]
 }
 
-
+recebeDados(dadosRecebidos : any){
+  dadosRecebidos.id = this.produtos.length + 1
+  this.produtos.push(dadosRecebidos)
+}
 
 
 }

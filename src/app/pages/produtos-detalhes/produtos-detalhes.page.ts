@@ -17,14 +17,27 @@ export class ProdutosDetalhesPage implements OnInit {
 
   ngOnInit() {
     const id : number = Number(this.route.snapshot.paramMap.get('id'))
-    this.produtoSelecionado = this.produto.enviarDadosId(id)
+    if (id > 0){
+      this.produtoSelecionado = this.produto.enviarDadosId(id)
+    } else{
+      this.produtoSelecionado = {id, nome: "", valor: 0.0}
+      this.modoEdicao = true
+    }
   }
 
   iniciarEdicao(){
     this.modoEdicao = true
   }
   encerrarEdicao(){
+    const id: number = Number(this.route.snapshot.paramMap.get('id'))
+
+    if (id > 0) {
+    this.modoEdicao = false
+    
+    }else{
+    
+    this.produto.recebeDados(this.produtoSelecionado)
     this.modoEdicao = false
   }
-
+}
 }
