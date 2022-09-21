@@ -9,8 +9,13 @@
   <ion-item *ngIf=!modoEdicao>Quantidade: {{produtoSelecionado.quantidade}}</ion-item>
 
   <ion-button *ngIf="!modoEdicao" (click)="iniciarEdicao()" shape="round" fill="outline" color="dark">Alterar dados</ion-button>
-  
-</ion-content>
+
+  <ion-fab horizontal="end">
+    <ion-fab-button color="dark" (click)="deletarServico()" routerLink="/produtos-listagem">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
 <form *ngIf="modoEdicao" (ngSubmit)="encerrarEdicao()">
   <ion-label>Nome</ion-label>
@@ -22,5 +27,7 @@
 
   <ion-button type="submit" shape="round" fill="outline" color="dark">Salvar</ion-button>
 </form>
+
+</ion-content>
 
 <ion-button shape="round" fill="outline" color="dark" routerLink="/produtos-listagem">Voltar</ion-button>

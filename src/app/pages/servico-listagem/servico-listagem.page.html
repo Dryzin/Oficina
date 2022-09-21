@@ -11,6 +11,13 @@
       <p>R$ {{todosDados1.valor}}</p>
     </ion-item>
   </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/servico-detalhes/-1" color="dark">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
 
 <ion-button shape="round" fill="outline" size=4 color="dark" routerLink="/home">Voltar</ion-button>

@@ -30,5 +30,8 @@ recebeDados(dadosRecebidos : any){
   this.produtos.push(dadosRecebidos)
 }
 
+deletaDados(dadosRecebidos : any){
+  this.produtos.splice(this.produtos.indexOf(dadosRecebidos),1)
+}
 
 }

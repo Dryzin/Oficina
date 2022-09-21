@@ -15,16 +15,34 @@ export class ServicoDetalhesPage implements OnInit {
   constructor(private route : ActivatedRoute,
     private produto : ServicosPrecosService) { }
 
-  ngOnInit() {
-    const id : number = Number(this.route.snapshot.paramMap.get('id'))
-    this.ServicosPrecosService = this.produto.enviarDadosId1(id)
+  ngOnInit(){
+      const id : number = Number(this.route.snapshot.paramMap.get('id'))
+      if (id > 0){
+        this.ServicosPrecosService = this.produto.enviarDadosId1(id)
+      } else{
+        this.ServicosPrecosService = {id, nome: "", valor: 0.0}
+        this.modoEdicao = true
+      }
+  }
+
+  deletarServico(){
+    this.produto.deletaDados(this.ServicosPrecosService)
   }
 
   iniciarEdicao(){
     this.modoEdicao = true
   }
-  encerrarEdicao(){
+  encerrarEdicao()  {
+    const id: number = Number(this.route.snapshot.paramMap.get('id'))
+
+    if (id > 0) {
+    this.modoEdicao = false
+    
+    }else{
+    
+    this.produto.recebeDados(this.ServicosPrecosService)
     this.modoEdicao = false
   }
+}
 
 }

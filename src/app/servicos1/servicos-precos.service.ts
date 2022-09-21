@@ -23,4 +23,13 @@ export class ServicosPrecosService {
     const servicoSelecionados = this.servicos1.filter(produto => produto.id === id)
     return servicoSelecionados[0]
   }
+
+  recebeDados(dadosRecebidos : any){
+    dadosRecebidos.id = this.servicos1.length + 1
+    this.servicos1.push(dadosRecebidos)
+  }
+
+  deletaDados(dadosRecebidos : any){
+    this.servicos1.splice(this.servicos1.indexOf(dadosRecebidos),1)
+  }
 }

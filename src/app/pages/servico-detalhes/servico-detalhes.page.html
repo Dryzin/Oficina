@@ -6,17 +6,21 @@
 
 <ion-content >
   <ion-item *ngIf=!modoEdicao>Serviços: {{ServicosPrecosService.nome}}</ion-item>
-  <ion-item *ngIf=!modoEdicao>Quantidade: {{ServicosPrecosService.valor}}</ion-item>
+  <ion-item *ngIf=!modoEdicao>Valor: {{ServicosPrecosService.valor}}</ion-item>
 
   <ion-button *ngIf="!modoEdicao" (click)="iniciarEdicao()" shape="round" fill="outline" color="dark">Alterar dados</ion-button>
+
+  <ion-fab horizontal="end">
+    <ion-fab-button color="dark" (click)="deletarServico()" routerLink="/servico-listagem">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
 
 <form *ngIf="modoEdicao" (ngSubmit)="encerrarEdicao()">
   <ion-label>Nome</ion-label>
   <ion-input [(ngModel)]="ServicosPrecosService.nome" name="nome"></ion-input>
-  <ion-label>Quantidade</ion-label>
-  <ion-input [(ngModel)]="ServicosPrecosService.quantidade" name="quantidade"></ion-input>
   <ion-label>Valor</ion-label>
   <ion-input [(ngModel)]="ServicosPrecosService.valor" name="valor"></ion-input>
 

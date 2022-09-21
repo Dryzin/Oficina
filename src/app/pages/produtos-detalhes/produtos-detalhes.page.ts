@@ -25,6 +25,10 @@ export class ProdutosDetalhesPage implements OnInit {
     }
   }
 
+  deletarServico(){
+    this.produto.deletaDados(this.produtoSelecionado)
+  }
+
   iniciarEdicao(){
     this.modoEdicao = true
   }
